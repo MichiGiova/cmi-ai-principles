@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Peacemaking - Principle Flashcards | CMI - Martti Ahtisaari Peace Foundation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="circuit" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M0 20h40M20 0v40" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" fill="none"/><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.2)"/><circle cx="0" cy="20" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="20" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="0" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="40" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="200" height="200" fill="url(%23circuit)"/></svg>');
+            opacity: 0.4;
+            animation: circuitFlow 8s linear infinite;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255,255,255,0.06) 0%, transparent 50%);
+            animation: dataFlow 6s ease-in-out infinite;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+        }
+
+        .cmi-logo {
+            height: 120px;
+            width: auto;
+            margin-bottom: 24px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header h1 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 400;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .cmi-tagline {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            margin-top: 16px;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .cmi-tagline a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cmi-tagline a:hover {
+            color: #ffffff;
+            border-bottom-color: rgba(255,255,255,0.6);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .flashcards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            background: #f9fafb;
+        }
+
+        .flashcard {
+            perspective: 1000px;
+            height: 320px;
+            cursor: pointer;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .flashcard-front {
+            background: #ffffff;
+            color: #1a1a1a;
+            border: 1px solid #e5e7eb;
+        }
+
+        .flashcard-back {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            transform: rotateY(180deg);
+        }
+
+        .principle-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+        }
+
+        .principle-key {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .principle-description {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: left;
+            color: #ffffff;
+        }
+
+        .flip-indicator {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(74, 144, 164, 0.1);
+            color: #4a90a4;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 500;
+            border: 1px solid rgba(74, 144, 164, 0.2);
+        }
+
+        .back-indicator {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .flashcard:hover .flashcard-inner {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer h3 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .footer p {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .cmi-info {
+            margin-top: 15px;
+            font-size: 0.85em;
+            color: rgba(255,255,255,0.8);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .cmi-info a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cmi-info a:hover {
+            color: #ffffff;
+            border-bottom-color: rgba(255,255,255,0.6);
+        }
+
+        .introduction-section, .context-section, .principles-header {
+            background: #ffffff;
+            padding: 80px 20px;
+            margin: 0;
+            color: #1a1a1a;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .introduction-section h2, .context-section h2, .principles-header h2 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+            text-align: left;
+        }
+
+        .introduction-section p, .context-section p, .principles-header p {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.125rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #4b5563;
+            text-align: left;
+        }
+
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .principles-header {
+            text-align: left;
+        }
+
+        .collaboration-section, .endorsement-section {
+            background: #ffffff;
+            padding: 80px 20px;
+            margin: 0;
+            color: #1a1a1a;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .collaboration-section h2, .endorsement-section h2 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+            text-align: left;
+        }
+
+        .collaboration-section p, .endorsement-section p {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.125rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #4b5563;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 60px 20px 40px;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            }
+            
+            .header p {
+                font-size: 1.125rem;
+                text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            }
+            
+            .cmi-logo {
+                height: 100px;
+            }
+            
+            .introduction-section, .context-section, .principles-header, .collaboration-section, .endorsement-section {
+                padding: 60px 20px;
+            }
+            
+            .section-content {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            
+            .introduction-section h2, .context-section h2, .principles-header h2, .collaboration-section h2, .endorsement-section h2 {
+                font-size: 2rem;
+                text-align: left;
+            }
+            
+            .flashcards-container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 60px 20px;
+            }
+            
+            .flashcard {
+                height: 300px;
+            }
+            
+            .flashcard-front, .flashcard-back {
+                padding: 24px;
+            }
+            
+            .principle-title {
+                font-size: 1.25rem;
+            }
+            
+            .principle-key {
+                font-size: 0.9rem;
+            }
+            
+            .principle-description {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <!-- Official CMI - Martti Ahtisaari Peace Foundation Logo -->
+                <img src="/CMI_25logo.svg" alt="CMI - Martti Ahtisaari Peace Foundation 25th Anniversary" class="cmi-logo" onerror="this.style.display='none'; console.log('Logo failed to load');">
+            </div>
+            <h1>AI for Peace Statement</h1>
+            <p>Our Principles for Responsible AI in Peacemaking</p>
+            <p class="cmi-tagline"><a href="https://cmi.fi" target="_blank">CMI - Martti Ahtisaari Peace Foundation</a></p>
+        </div>
+    </div>
+
+    <div class="introduction-section">
+        <div class="section-content">
+            <h2>1. Introduction</h2>
+            <p>At CMI – Martti Ahtisaari Peace Foundation, we believe that artificial intelligence (AI) has the potential to become a powerful enabler of inclusive, just, and lasting peace. Used responsibly, AI can help mediators and conflict-affected communities better understand complex dynamics, expand participation, and support outcomes that are more legitimate and sustainable.</p>
+            <p>This AI for Peace Statement sets out CMI's vision, principles, and commitments for the ethical and effective use of AI in peacemaking. It is a living document, grounded in our decades of experience in mediation and dialogue.</p>
+        </div>
+    </div>
+
+    <div class="context-section">
+        <div class="section-content">
+            <h2>2. Context and Rationale</h2>
+            <p>AI is rapidly transforming the political, economic, and social landscapes in which peace processes unfold. Its application in conflict settings is already shaping narratives, influencing trust between actors, and affecting the flow of information. Without proactive guidance, AI can exacerbate inequalities, entrench bias, and further erode confidence among stakeholders. We must accelerate our efforts to harness AI for peace.</p>
+            <p>While governments, companies, and civil society are investing heavily in AI for security, commerce, and administration, far less attention and resources are directed towards using AI to foster dialogue, bridge divides, and strengthen conflict prevention. The peacebuilding field must act decisively to catch up and lead in these areas.</p>
+            <p>CMI calls for crafting partnerships with governments, the private sector, and research institutions to put AI at the service of peace. This requires both principled use - supported by governance frameworks, ethical safeguards, and trust-building measures - and innovation through the development of new applications, use cases, and tools that can be applied directly to foster dialogue and peacemaking. Together, these ensure that AI strengthens - rather than undermines - relationships among conflict stakeholders.</p>
+        </div>
+    </div>
+
+    <div class="principles-header">
+        <div class="section-content">
+            <h2>3. Principles for AI in Peacemaking</h2>
+            <p>The following principles define how CMI applies AI in peacemaking - guiding the design, procurement, and use of AI-enabled tools in our work.</p>
+            <p style="font-size: 0.9em; margin-top: 10px; opacity: 0.8; text-align: center;">Click any card to reveal the full principle</p>
+        </div>
+    </div>
+
+    <div class="flashcards-container">
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">
+                    <div class="principle-title">Do No Harm</div>
+                    <div class="principle-key">Responsibility begins with protection.</div>
+                    <div class="flip-indicator">Click to flip</div>
+                </div>
+                <div class="flashcard-back">
+                    <div class="principle-description">
+                        AI systems must never endanger lives, escalate tensions, or contribute to surveillance, repression, or manipulation. We apply rigorous data protection and safety standards, ensuring AI-enabled interventions protect trust, confidentiality, personal security and ethical standards.
+                    </div>
+                    <div class="back-indicator">Click to return</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">
+                    <div class="principle-title">Inclusive Design</div>
+                    <div class="principle-key">Inclusive AI empowers all participants.</div>
+                    <div class="flip-indicator">Click to flip</div>
+                </div>
+                <div class="flashcard-back">
+                    <div class="principle-description">
+                        Inclusion is foundational, not optional. CMI's AI-enhanced processes amplify marginalized voices—especially women, youth, minorities, and displaced populations—through accessible and participatory approaches. We actively account for systemic biases and power asymmetries to ensure equitable outcomes for all participants, making certain that technology reduces rather than reinforces existing inequalities.
+                    </div>
+                    <div class="back-indicator">Click to return</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">
+                    <div class="principle-title">Contextual Sensitivity</div>
+                    <div class="principle-key">Responsive AI begins with listening.</div>
+                    <div class="flip-indicator">Click to flip</div>
+                </div>
+                <div class="flashcard-back">
+                    <div class="principle-description">
+                        Every peace process carries unique historical, social, and political dynamics. We collaboratively design and carefully adapt AI tools to local realities, adjusting off-the-shelf technologies to align with cultural sensitivities, conflict dynamics, and political contexts. This ensures our AI applications respect and respond to the unique circumstances of each peace process.
+                    </div>
+                    <div class="back-indicator">Click to return</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">
+                    <div class="principle-title">Stakeholder Engagement & Transparency</div>
+                    <div class="principle-key">Responsiveness means shared agency.</div>
+                    <div class="flip-indicator">Click to flip</div>
+                </div>
+                <div class="flashcard-back">
+                    <div class="principle-description">
+                        We ensure explicit consent and comprehensive information sharing about how AI tools function and how data will be used. Local peace actors must understand and trust the technologies supporting their dialogue processes, maintaining ownership over their peace efforts.
+                    </div>
+                    <div class="back-indicator">Click to return</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">
+                    <div class="principle-title">Hybrid Engagement Models</div>
+                    <div class="principle-key">Responsive AI strengthens relational foundations.</div>
+                    <div class="flip-indicator">Click to flip</div>
+                </div>
+                <div class="flashcard-back">
+                    <div class="principle-description">
+                        AI should complement, not replace, in-person engagement. We integrate AI tools into hybrid approaches that strengthen — rather than weaken — human relationships and trust-building across divides.
+                    </div>
+                    <div class="back-indicator">Click to return</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">
+                    <div class="principle-title">Ethical Learning & Adaptation</div>
+                    <div class="principle-key">Responsible AI innovation is never static.</div>
+                    <div class="flip-indicator">Click to flip</div>
+                </div>
+                <div class="flashcard-back">
+                    <div class="principle-description">
+                        We continuously evaluate AI impacts through systematic monitoring and stakeholder feedback. Tools are refined or abandoned based on their actual contribution to peace outcomes, ensuring our AI use evolves responsibly through evidence rather than assumptions.
+                    </div>
+                    <div class="back-indicator">Click to return</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="collaboration-section">
+        <div class="section-content">
+            <h2>4. Collaboration and Advocacy</h2>
+            <p>CMI commits to investing in innovative AI tools for peacemaking, ensuring ethics-by-design through conflict sensitivity and bias testing from the earliest stages. We will actively engage conflict parties and communities in developing context-appropriate applications while building partnerships with governments, the private sector, and research institutions to expand AI for peace initiatives.</p>
+            <p>CMI will share lessons learned, promote responsible AI practices across the peacebuilding community, and advocate for greater global investment in AI for peace. We invite peer organisations, governments, and companies to align with or co-sign this Statement, and to work with us in advancing ethical, innovative uses of AI in peacemaking.</p>
+        </div>
+    </div>
+
+    <div class="endorsement-section">
+        <div class="section-content">
+            <h2>5. Endorsement</h2>
+            <p>Signed on behalf of the CMI – Martti Ahtisaari Peace Foundation:</p>
+            <div style="margin-top: 30px; text-align: left;">
+                <p style="margin-bottom: 40px;">[Signature]</p>
+                <p style="margin-bottom: 10px;">[Name], [Position]</p>
+                <p>[Date]</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <h3>About CMI - Martti Ahtisaari Peace Foundation</h3>
+            <p>CMI - Martti Ahtisaari Peace Foundation is an independent, non-governmental organization that works to resolve conflict and build sustainable peace. Founded by Nobel Peace Prize laureate Martti Ahtisaari, CMI works to prevent and resolve violent conflicts through dialogue and mediation.</p>
+            <div class="cmi-info">
+                <p>© 2025 CMI - Martti Ahtisaari Peace Foundation | <a href="https://cmi.fi" target="_blank">www.cmi.fi</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const focusedCard = document.activeElement.closest('.flashcard');
+                if (focusedCard) {
+                    e.preventDefault();
+                    flipCard(focusedCard);
+                }
+            }
+        });
+
+        // Make cards focusable for accessibility
+        document.querySelectorAll('.flashcard').forEach(card => {
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', 'Flashcard - click or press Enter to flip');
+        });
+    </script>
+</body>
+</html>
